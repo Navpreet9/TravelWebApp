@@ -1,0 +1,59 @@
+﻿@model TravelWebApp.Models.Destination
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Admin Operations</h1>
+        <p>Add New Destination</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-dark">View All Destination</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/common.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="DestinationName" class="control-label"></label>
+                    <input asp-for="DestinationName" class="form-control" />
+                    <span asp-validation-for="DestinationName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About" class="control-label"></label>
+                    <textarea asp-for="About" class="form-control"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="custom-file mb-3">
+                    <input asp-for="File.FormFile" type="file" class="custom-file-input" id="customFile">
+                    <label asp-for="File.FormFile" class="custom-file-label">Choose Image File</label>
+                    <span asp-validation-for="File.FormFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save Destination Details" class="btn btn-dark" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script>
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
+    }

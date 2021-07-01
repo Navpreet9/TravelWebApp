@@ -1,0 +1,27 @@
+﻿@model TravelWebApp.Models.Destination
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container mb-3">
+    <div class="text-center">
+        <h1 class="display-4">Admin Operations</h1>
+        <p>Delete Destination Details</p>
+    </div>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Destination: @Model.DestinationName</h2>
+            <h2>Country: @Model.Country</h2>
+            <h2>About </h2>
+            <p>@Model.About</p>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DestinationID" />
+                <input type="submit" value="Delete Destination Details" class="btn btn-danger" />
+            </form>
+        </div>
+        <div class="card col-md-4">
+            <img class="card-img-top" src="~/destination/@Model.DestinationID@Model.Extension" alt="@Model.DestinationName" style="width:100%">
+        </div>
+    </div>
+</div>

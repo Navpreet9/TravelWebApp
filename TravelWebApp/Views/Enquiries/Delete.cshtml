@@ -1,0 +1,60 @@
+﻿@model TravelWebApp.Models.Enquiry
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Admin Operations</h1>
+        <p>Delete Enquiry Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-dark">View All Enquiry</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/travel.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.UserID)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.UserID)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.About)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.About)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.EnquiryDate)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.EnquiryDate)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="EnquiryID" />
+                <input type="submit" value="Delete Enquiry Details" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

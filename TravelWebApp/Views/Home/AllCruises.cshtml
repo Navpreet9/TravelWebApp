@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TravelWebApp.Models.Cruise>
+
+@{
+    ViewData["Title"] = "AllCruises";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Cruises</h1>
+    </div>
+    <hr />
+    <hr />
+    <p class="text-justify p-5">Cruising takes the stress out of international travel. Step off in exciting cities, experience new cultures and wind through spectacular scenery in complete comfort. </p>
+    <hr />
+    <h2 class="text-center">Luxury Cruise Holiday Deals</h2>
+    <p class="text-justify p-5">A new generation of cruising has arrived: where the dining is world-class, activities cater to niche interests, cabins rate up to five stars, and hand-crafted itineraries touch on some of the most isolated and exotic ports on the planet. River cruise or ocean cruise, whether you’re a solo traveller, a couple, travelling with friends or family, expect to be impressed. </p>
+    <p class="text-justify p-5">Cruising takes the stress out of international travel. Step off in exciting cities, experience new cultures and wind through spectacular scenery in complete comfort. The best part? You only have to unpack once. Once you've experienced a luxury cruise holiday with us, you won’t want to travel any other way.</p>
+    <hr />
+    <h2 class="text-center">All Cruises</h2>
+    <div class="row">
+        @foreach ((Cruise item, Int32 i) in Model.Select((value, i) => (value, i)))
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-ship" aria-hidden="true"></i> @item.CruiseLine
+                    </div>
+                    <img src="~/cruise/ship@(i%4+1).png" class="card-img" style="object-fit:cover;object-position:center;height:200px;width:100%">
+                    <div class="card-body">
+                        <h5 class="card-title"> @item.DestinationName</h5>
+                        <p class="card-text">@item.Description </p>
+                        <p class="card-text">$ @item.Price per-person twin-share* </p>
+                        <a asp-area="" asp-controller="Home"
+               asp-action="CruiseEnquiry" asp-route-id="@item.CruiseID" class="btn btn-dark">Enquire Now</a>
+                    </div>
+                </div>                
+            </div>
+        }
+    </div>
+</div>

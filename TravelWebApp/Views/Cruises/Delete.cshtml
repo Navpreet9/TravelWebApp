@@ -1,0 +1,55 @@
+﻿@model TravelWebApp.Models.Cruise
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Admin Operations</h1>
+        <p>Delete Cruise Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-dark">View All Cruise</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/travel.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.CruiseLine)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CruiseLine)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DestinationName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DestinationName)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="CruiseID" />
+                <input type="submit" value="Delete Cruise Details" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
+

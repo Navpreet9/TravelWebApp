@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TravelWebApp.Models.Destination>
+
+@{
+    ViewData["Title"] = "AllDestinations";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Destinations</h1>
+    </div>
+    <hr />
+    <p class="text-justify p-5">Where will your next year of travel take you? To the endless sunshine of the Mediterranean or the fabled landscapes of Scandinavia? Perhaps you want to unlock the secrets of Singapore or experience the rich culture and tradition of Vietnam. Enjoy spectacular wildlife viewing in Canada or big game viewing on an African safari. Whatever your travel preference, we can help. Search for your desired destination and talk to us today.</p>
+    <hr />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 mb-2" style="height: 70vh; max-height: 740px;position:relative">
+                <img src="~/destination/@item.DestinationID@item.Extension" alt="@item.DestinationName" style="display: inline; height: 100%; min-height: 100%; max-width:100%; -o-object-fit: cover; object-fit: cover;"/>
+                <div style="padding: 1.875rem 3.75rem;
+        border-top: 3px solid #ffffff;
+        border-bottom: 3px solid #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%);
+        height: 50%;
+        background: black;
+        color:white;
+        opacity: 0.5;
+    ">
+                    <h1 class="text-center">@item.DestinationName</h1>
+                    <p class="text-center">@item.About</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

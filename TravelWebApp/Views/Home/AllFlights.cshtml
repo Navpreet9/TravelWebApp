@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TravelWebApp.Models.Flight>
+
+@{
+    ViewData["Title"] = "AllFlights";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">International and Domestic Flights</h1>
+    </div>
+    <hr />
+    <p class="text-justify p-5">Now more than ever, having complete confidence in your travel itinerary is a must. This is where Travel Associates truly shines. With decades of worldly travel expertise under our belts, we’re in the right position to organise the best deal for your domestic or international flights. </p>
+    <p class="text-justify p-5">Our first-had experiences and specialised travel knowledge means we can guide you through any questions or concerns you might have for complete peace of mind. The only question is, where will you be flying to next?</p>
+    <h2 class="text-center">International flights</h2>
+    <p class="text-justify p-5">Whether you’re planning a jump across the pond to our neighbours in Australia, a vacation to a sun-drenched island in the South Pacific, or somewhere further abroad, our experienced Travel Advisers can assist. Our team have a wealth of travel knowledge, meaning when we recommend the best travel itinerary for you, you can trust we’re speaking from personal experience.</p>
+    <p class="text-justify p-5">
+        Allow us to craft a bespoke international flight literary that minimises the stress of your upcoming trip and lets you focus on what matters most – enjoying your time away. We have ample experiencing planning everything from one-way and return flights, to more complex round-world flights and mixed-class tickets.
+    </p>
+    <h2 class="text-center">Domestic flights</h2>
+    <p class="text-justify p-5">Despite its size, New Zealand offers a bounty of diverse landscapes and natural beauty. This means there’s plenty of travel potential just a short domestic flight away. Allow our Travel Advisers to plan your next weekend adventure or holiday by finding you the most affordable flight that matches your schedule and travel needs.</p>
+    <h1 class="text-center">All Flights</h1>
+    <div class="row">
+        
+        @foreach (var item in Model)
+        {
+        <div class="col-md-6 mb-2">
+            <div class="card border border-dark">
+                <div class="card-header">
+                    <i class="fa fa-plane"></i> @item.Airline
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Source.DestinationName <i class="fa fa-angle-double-left"></i> <i class="fa fa-angle-double-right"></i> @item.Destination.DestinationName</h5>
+                    <p class="card-text">@item.Type</p>
+                    <p class="card-text">$ @item.Price per-person* </p>
+                    <a asp-area="" asp-controller="Home"
+                       asp-action="FlightEnquiry" asp-route-id="@item.FlightID" class="btn btn-dark">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+            
+        }
+    </div>
+</div>

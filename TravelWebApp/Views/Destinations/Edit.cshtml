@@ -1,0 +1,50 @@
+﻿@model TravelWebApp.Models.Destination
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Admin Operations</h1>
+        <p>Edit Destination Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-dark">View All Destination</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/travel.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="DestinationID" />
+                <input type="hidden" asp-for="Extension" />
+                <div class="form-group">
+                    <label asp-for="DestinationName" class="control-label"></label>
+                    <input asp-for="DestinationName" class="form-control" />
+                    <span asp-validation-for="DestinationName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About" class="control-label"></label>
+                    <textarea asp-for="About" class="form-control"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update Destination Details" class="btn btn-dark" />
+                </div>
+            </form>
+        </div>
+    </div>
+ </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
